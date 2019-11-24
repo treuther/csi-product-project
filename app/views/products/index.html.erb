@@ -3,5 +3,6 @@
 <% @products.each do |product| %>
 
     <h2><%= link_to product.active_ingredient, product_path(product.id) %> - <%= product.chem_group.name %></h2>
+    <%= link_to "Post a review", new_product_review_path(product.id)%>
     <p><%= product.description %></p>
 <% end %>

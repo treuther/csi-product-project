@@ -6,8 +6,8 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.new(review_params)
-        if @review.save #is the review is valid with a product_id (review model)?
+        @review = current_user.reviews.build(review_params)
+        if @review.save #is the review valid with a product_id (review model)?
             redirect_to review_path(@review)
         else
             render :new
@@ -18,12 +18,7 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        @review = current_user.reviews.build(review_params)
-        if @review.save
-            redirect_to review_path(@review)
-        else
-            render :new
-        end
+        @review = Review.find_by_id(params[:id])
     end
 
     private
