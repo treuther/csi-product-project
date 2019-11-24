@@ -1,0 +1,7 @@
+<h1>All Reviews</h1>
+
+<ul>
+    <% @reviews.each do |review| %>
+        <li><%= review.product.active_ingredient %>: <%= review.title %> - <%= review.rating %></li>
+    <% end %>
+</ul>

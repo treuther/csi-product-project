@@ -1,8 +1,11 @@
 class ReviewsController < ApplicationController
 
-    def new #this is a nested route, a review belongs_to a product
-        @product = Product.find_by_id(params[:product_id]) #bc review belongs_to product and nested
-        @review = @product.reviews.build #used when we have a nested route
+    def new
+        if @product = Product.find_by_id(params[:product_id]) #bc review belongs_to product and nested
+            @review = @product.reviews.build #used when we have a nested route
+        else #the new review request is NOT nested
+            @review = Review.new
+        end
     end
 
     def create
@@ -14,7 +17,15 @@ class ReviewsController < ApplicationController
         end
     end
 
-    def index #good to nest to show all reviews for 1 product
+    def index #good to nest to show all reviews for 1 product, based on URL path
+        #how to check if nested
+        if @product = Product.find_by_id(params[:product_id])
+        #nested
+            @reviews = @product.reviews
+        else
+        #not nested
+            @reviews = Review.all
+        end
     end
 
     def show
