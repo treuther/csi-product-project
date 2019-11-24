@@ -10,7 +10,8 @@
   </head>
 
   <div>
-    <%= link_to "Log Out", logout_path, method: :delete %> <!-- by default, has a method of 'get'
+    <%= link_to "Log Out", logout_path, method: :delete %> <!-- by default, has a method of 'get' -->
+    <%= link_to "Create New Product", new_product_path %>
   </div>
   <body>
     <%= yield %>

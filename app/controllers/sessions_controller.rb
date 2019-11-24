@@ -18,9 +18,10 @@ class SessionsController < ApplicationController
         # if @user && @user.authenticate(params[:user][:password]) -- works the same as below
         if @user.try(:authenticate, params[:user][:password]) # try is active support method. if no user, returns nil, if user then authenticates pword. If wrong, returns false. If right, returns user object
             session[:user_id] = @user.id #storing a session key to the user
-            redirect_to user_path
+            redirect_to user_path(@user)
         else
             flash[:error] = "Sorry, username or password is incorrect. Please try again."
             redirect_to login_path #using redirect bc someone could be trying to guess your login info
+        end
     end
 end
