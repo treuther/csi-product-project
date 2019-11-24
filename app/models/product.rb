@@ -9,7 +9,8 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validate :not_a_duplicate #checking for what we DON'T WANT
   
-  scope :order_by_rating, -> {joins(:reviews).group(:id).order('avg(rating) desc')}
+  #scope model method - changing the view of the collection
+  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   
   def self.alpha
     order(active_ingredient: :desc)

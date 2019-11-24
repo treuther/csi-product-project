@@ -1,9 +1,5 @@
-<% if params[:product_id] %>
-    <h1>Create a new review for <%= @review.product.active_ingredient %> - <%= @review.product.chem_group.name %></h1>
-<% else %>
-    <h1>Create a review</h1>
-<% end %>
 
+<%= display_header(@review) %>
 
 <%= render partial: 'layouts/errors', locals: {object: @review} %> <!-- object is the element in the error boiler, @review is the variable that will sub-out object in the boiler -->
 

@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     end
 
     def index
-        @products = Product.order_by_rating
+        @products = Product.order_by_rating.includes(:chem_group)
     end
 
     def show
