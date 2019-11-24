@@ -1,0 +1,7 @@
+<h1>All the Products</h1>
+
+<% @products.each do |product| %>
+
+    <h2><%= link_to product.active_ingredient, product_path(product.id) %> - <%= product.chem_group.name %></h2>
+    <p><%= product.description %></p>
+<% end %>
