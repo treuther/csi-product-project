@@ -1,0 +1,21 @@
+<h1>Create a new review for <%= @review.product.active_ingredient %> - <%= @review.product.chem_group.name %></h1>
+
+<%= form_for(@review) do |f| %>
+
+    <div>
+        <%= f.label :rating %><br>
+        <%= f.number_field :rating, min:0, max:10 %><br>
+    <div>
+    <div>
+        <%= f.label :title %><br>
+        <%= f.text_area :title %><br>
+    </div>
+    <div>
+        <%= f.label :content %><br>
+        <%= f.text_area :content %><br>
+    </div>
+    <%= f.hidden_field :product_id %> <!-- makes association to product being reviewed. pre-populates. -->
+
+    <%= f.submit "Post Review" %>
+
+<% end %>

@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy' #NOT get because anyone can "request" that URL
 
+
   resources :reviews
-  resources :products
+  resources :products do
+    resources :reviews, only: [:new, :index] #this is creating the path /products/1/reviews/new
+  end
   resources :chem_groups
   resources :users #this gives us the user#create
 
