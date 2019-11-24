@@ -4,9 +4,19 @@
     <h1>Create a review</h1>
 <% end %>
 
+
 <%= render partial: 'layouts/errors', locals: {object: @review} %> <!-- object is the element in the error boiler, @review is the variable that will sub-out object in the boiler -->
 
+
 <%= form_for(@review) do |f| %>
+<% if params[:product_id] %>
+    <%= f.hidden_field :product_id %>
+<% else %>
+    <div>
+        <%= f.label :product_id, "Select a Product" %>
+        <%= f.collection_select :product_id, Product.alpha, :id, :act_in_and_chem_group, include_blank: true %>
+    </div>
+<% end %>
 
     <div>
         <%= f.label :rating %><br>

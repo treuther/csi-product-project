@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
         @product.user_id = session[:user_id] #bc product belongs_to user. user_id required from model
-        if @product.save
+        if @product.save #validation
             redirect_to product_path(@product)
         else
             render :new
@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     end
 
     def index
-        @products = Product.all
+        @products = Product.order_by_rating
     end
 
     def show
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:active_ingredient, :description, :chem_group_id, chem_group_attributes: [:name])
+        params.require(:product).permit(:description, :active_ingredient, :chem_group_id, chem_group_attributes: [:name])
         #chem_group_id and chem_group_attributes [:name] is permitting elements from new product form
     end
 

@@ -2,6 +2,6 @@
 
 <ul>
     <% @reviews.each do |review| %>
-        <li><%= review.product.active_ingredient %>: <%= review.title %> - <%= review.rating %></li>
+        <li><%= review.product.active_ingredient %>: <%= link_to review.title, review_path(review) %> - <%= review.rating %></li>
     <% end %>
 </ul>
