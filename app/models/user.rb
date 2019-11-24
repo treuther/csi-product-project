@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :reviewed_products, through: :reviews, source: :product #creates the relation to Review (belongs_to product)
     has_many :products #that the admin has created
 
-    validates :username, uniqueness: true, presence: true
+    validates :username, uniqueness: true, presence: true #uniqueness of each username. Protects against dup records.
     
     has_secure_password
 end
