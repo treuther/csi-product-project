@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
         @product = Product.new(product_params)
         @product.user_id = session[:user_id] #bc product belongs_to user. user_id required from model
         if @product.save #validation
+            # @product.image.purge
+            # @product.image.attach(params[:product][:image]) # allows image to be replaced if user changes image
             redirect_to product_path(@product)
         else
             @product.build_chem_group
