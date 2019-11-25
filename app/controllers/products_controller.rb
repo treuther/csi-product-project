@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
         if @product.save #validation
             redirect_to product_path(@product)
         else
+            @product.build_chem_group
             render :new
         end
     end
@@ -20,12 +21,13 @@ class ProductsController < ApplicationController
     end
 
     def show
+        @product = Product.find_by(id: params[:id])
     end
 
     private
 
     def product_params
-        params.require(:product).permit(:description, :active_ingredient, :chem_group_id, chem_group_attributes: [:name])
+        params.require(:product).permit(:description, :active_ingredient, :image, :chem_group_id, chem_group_attributes: [:name])
         #chem_group_id and chem_group_attributes [:name] is permitting elements from new product form
     end
 

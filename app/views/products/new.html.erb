@@ -12,6 +12,10 @@
         <%= f.text_area :description %><br>
     </div>
     <div>
+        <%= f.label :image %><br>
+        <%= f.file_field :image %><br>
+    </div>
+    <div>
         <p>Select a Chemical Group:</p>
         <%= f.collection_select :chem_group_id, ChemGroup.all, :id, :name %>
     </div>
