@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy' #NOT get because anyone can "request" that URL
 
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+
 
   resources :reviews
   resources :products do
