@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     def destroy
         session.delete :user_id
         redirect_to '/'
-        end
     end
 
     def new
@@ -43,4 +42,5 @@ class SessionsController < ApplicationController
     def auth
         request.env['omniauth.auth']
     end
+
 end

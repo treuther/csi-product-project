@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
 
     def create
         @review = current_user.reviews.build(review_params)
-        if @review.save #is the review valid with a product_id (review model)?
+        if @review.save #is the review valid with a product_id?
             redirect_to review_path(@review)
         else
             render :new
