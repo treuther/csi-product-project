@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   
   def self.alpha
-    order(active_ingredient: :desc)
+    order(:active_ingredient)
   end
 
   #scope method
