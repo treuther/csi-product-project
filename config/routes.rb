@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
+  match '*path' => redirect('/'), via: :get # reroutes all unknown routes to root url
+
 
   resources :reviews
   resources :products do
