@@ -18,12 +18,19 @@ class ProductsController < ApplicationController
         end
     end
 
+    # def edit
+    # end
+
+    # def update
+    # end
+
     def index
         @products = Product.order_by_rating.includes(:chem_group)
     end
 
     def show
         @product = Product.find_by(id: params[:id])
+        @user = User.find_by(id: params[:user])
     end
 
     private
