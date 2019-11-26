@@ -5,14 +5,14 @@
 
 
 <%= form_for(@review) do |f| %>
-<% if params[:product_id] %>
-    <%= f.hidden_field :product_id %>
-<% else %>
-    <div>
-        <%= f.label :product_id, "Select a Product" %>
-        <%= f.collection_select :product_id, Product.alpha, :id, :act_in_and_chem_group, include_blank: true %>
-    </div>
-<% end %>
+    <% if params[:product_id] %>
+        <%= f.hidden_field :product_id %> <!-- makes associate to product being reviews. pre-populates -->
+    <% else %>
+        <div>
+            <%= f.label :product_id, "Select a Product" %>
+            <%= f.collection_select :product_id, Product.alpha, :id, :act_in_and_chem_group, include_blank: true %>
+        </div>
+    <% end %>
 
     <div>
         <%= f.label :rating %><br>
@@ -20,13 +20,12 @@
     <div>
     <div>
         <%= f.label :title %><br>
-        <%= f.text_area :title %><br>
+        <%= f.text_field :title %><br>
     </div>
     <div>
         <%= f.label :content %><br>
-        <%= f.text_area :content %><br>
+        <%= f.text_area :content, size: "25x10" %><br>
     </div>
-    <%= f.hidden_field :product_id %> <!-- makes association to product being reviewed. pre-populates. -->
 
     <%= f.submit "Post Review" %>
 
