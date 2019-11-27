@@ -1,10 +1,15 @@
 class ReviewsController < ApplicationController
 
     def new
-        if @product = Product.find_by_id(params[:product_id]) #bc review belongs_to product and nested
-            @review = @product.reviews.build #used when we have a nested route
-        else #the new review request is NOT nested
-            @review = Review.new
+        if logged_in?
+            if @product = Product.find_by_id(params[:product_id]) #bc review belongs_to product and nested
+                @review = @product.reviews.build #used when we have a nested route
+            else #the new review request is NOT nested
+                @review = Review.new
+            end
+        else
+            flash[:error] = "Sorry, you must be logged in to create a new review."
+            redirect_to reviews_path
         end
     end
 

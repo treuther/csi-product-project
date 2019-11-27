@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :products do
-    resources :reviews, only: [:new, :index] #this is creating the path /products/1/reviews/new
+    resources :reviews, only: [:new, :index] #this is creating the path /products/1/reviews/new or index
   end
   resources :chem_groups
   resources :users #this gives us the user#create

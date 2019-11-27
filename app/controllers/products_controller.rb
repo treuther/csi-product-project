@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
 
     def new
-        @product = Product.new
-        1.times {@product.build_chem_group} #for the nested form. Builds the chem_group attributes
+        if logged_in?
+            @product = Product.new
+            1.times {@product.build_chem_group} #for the nested form. Builds the chem_group attributes
+        else
+            flash[:error] = "Sorry, you must be logged in to create a new product."
+            redirect_to products_path
+        end
     end
 
     def create
