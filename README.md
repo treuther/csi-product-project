@@ -1,24 +1,36 @@
-# README
+# CSI Product Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails app for adding products and leaving reviews
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+This application allows a user to create products, upload a product image, write up a description and leave reviews for products that others have added to the application.
 
-* System dependencies
+* Create a login to add the functionality of adding, editing and deleting your own products.
+* if you're not logged in, that's ok. You can view products and reviews but you can't edit.
+* You can edit your own products, but not others.
+* You can view a user's profile, but only if you're logged in!
 
-* Configuration
+## Ruby version 2.6.1
 
-* Database creation
+## Installation
 
-* Database initialization
+* Fork and clone this repo
 
-* How to run the test suite
+* cd csi-product-project
 
-* Services (job queues, cache servers, search engines, etc.)
+* bundle install
 
-* Deployment instructions
+* You might have to migrate the database with rake db:migrate
 
-* ...
+* Open a browser and get started!
+
+## Contributor's Guide
+
+File an issue with a pull request
+
+## Licensing
+
+* This project has been licensed under the MIT open source license.
+
+<a>https://github.com/treuther/csi-product-project/blob/master/LICENSE</a>
