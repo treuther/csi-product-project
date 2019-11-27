@@ -18,7 +18,12 @@ class Product < ApplicationRecord
   end
 
   #scope method
-  def self.highest_rating
+  def average_rating
+    if self.reviews.size > 0
+      self.reviews.average(:rating)
+    else
+      'no reviews'
+    end
   end
   
   def chem_group_attributes=(attributes)
