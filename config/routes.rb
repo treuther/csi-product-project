@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :epas
   get '/' => 'sessions#welcome'
   get '/login' => 'sessions#new' #existing user needs a session
   post '/login' => 'sessions#create'
