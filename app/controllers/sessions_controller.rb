@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+    layout false, only: [:welcome]
+
     def welcome
     end
 

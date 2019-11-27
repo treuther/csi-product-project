@@ -1,4 +1,2 @@
 module ProductsHelper
-
-    
 end

@@ -22,7 +22,8 @@ class ProductsController < ApplicationController
         @product = Product.find_by(id: params[:id])
         1.times {@product.build_chem_group}
         if @product.user != current_user
-            redirect_to products_path(@product)
+            flash[:error] = "Sorry, you can only edit your own products"
+            redirect_to products_path
         end
     end
 
