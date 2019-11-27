@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
     def new
         @product = Product.new
-        @product.build_chem_group #for the nested form. Builds the chem_group attributes
+        1.times {@product.build_chem_group} #for the nested form. Builds the chem_group attributes
     end
 
     def create
@@ -20,11 +20,19 @@ class ProductsController < ApplicationController
 
     def edit
         @product = Product.find_by(id: params[:id])
+        1.times {@product.build_chem_group}
+        if @product.user != current_user
+            redirect_to products_path(@product)
+        end
     end
 
     def update
-        @product.update(product_params)
-        redirect_to product_path(@product)
+        @product = Product.find_by(id: params[:id])
+        if @product.update(product_params)
+            redirect_to product_path(@product)
+        else
+            render :edit
+        end
     end
 
     def index
@@ -39,7 +47,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:description, :active_ingredient, :image, :chem_group_id, chem_group_attributes: [:name])
+        params.require(:product).permit(:description, :active_ingredient, :image, :chem_group_id, chem_group_attributes: [:id, :name])
         #chem_group_id and chem_group_attributes [:name] is permitting elements from new product form
     end
 
