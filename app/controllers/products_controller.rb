@@ -18,11 +18,14 @@ class ProductsController < ApplicationController
         end
     end
 
-    # def edit
-    # end
+    def edit
+        @product = Product.find_by(id: params[:id])
+    end
 
-    # def update
-    # end
+    def update
+        @product.update(product_params)
+        redirect_to product_path(@product)
+    end
 
     def index
         @products = Product.order_by_rating.includes(:chem_group)

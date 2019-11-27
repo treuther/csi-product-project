@@ -1,7 +1,7 @@
 <h1><%= @product.active_ingredient %></h1>
 
 <% if @product.image.attached? %>
-    <%= image_tag url_for(@product.image) %>
+    <%= image_tag url_for(@product.image.variant(resize: "200x200")) %>
 <% end %>
 
 <h2><%= @product.chem_group.name %></h2>
