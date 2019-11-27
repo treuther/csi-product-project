@@ -30,6 +30,11 @@ class Product < ApplicationRecord
     self.chem_group = ChemGroup.find_or_create_by(attributes) if !attributes['name'].empty?
     self.chem_group
   end
+  
+  def epa_attributes=(attributes)
+    self.epa = Epa.find_or_create_by(attributes) if !attributes['chem_number'].empty?
+    self.epa
+  end
 
   #if there is already a product with that active_ingredient && chem_group, give error
   def not_a_duplicate

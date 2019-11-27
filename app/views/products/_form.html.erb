@@ -25,6 +25,12 @@
             <%= cg.text_field :name %>
         <% end %>
     </div>
+    <div>
+    <%= f.fields_for :epa do |e| %>
+            <%= e.label :chem_number %>
+            <%= e.number_field :chem_number %>
+        <% end %>
+    <div>
     <br>
     <%= f.submit "Save" %>
 <% end %>
